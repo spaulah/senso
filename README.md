@@ -14,8 +14,9 @@ I spent many years working with OCR in document management systems. Senso is the
 server I wanted from that experience: OCR and speech recognition in one place, local-first, with nothing
 else bolted on.
 
-> **Status: early (0.1.0).** Unit and mocked-HTTP tests pass, and the stdio protocol layer has been
-> smoke-tested. It has **not** yet been verified against live Azure services. See [Limitations](#limitations).
+> **Status: early (0.1.0).** Unit and mocked-HTTP tests pass, and both tools have been tested manually
+> against live Azure: OCR with an Azure AI Services (Computer Vision) resource, and transcription with a
+> `gpt-4o-transcribe-diarize` deployment. Automated tests never call Azure. See [Limitations](#limitations).
 
 ## How it works
 
@@ -189,11 +190,12 @@ Reports version, which tools are configured, limits and supported formats. It ne
 
 ## Limitations
 
-- **Not yet tested against live Azure.** Request/response handling follows Microsoft's documentation and
-  is covered by mocked tests only. Azure's documentation for diarized transcription output is thin and has
-  varied by api-version; if your deployment returns no `segments`, `srt`/`vtt` will fail with a clear
-  error and `json` will warn. `Senso__Speech__ResponseFormat` and `ChunkingStrategy` are configurable for
-  that reason.
+- **Limited live testing.** The automated suite uses mocked responses only; live checks were manual and
+  covered the Azure AI Services OCR path and one `gpt-4o-transcribe-diarize` deployment. Other regions,
+  api-versions, models and audio types are untested. Azure's documentation for diarized transcription
+  output is thin and has varied by api-version; if your deployment returns no `segments`, `srt`/`vtt`
+  will fail with a clear error and `json` will warn. `Senso__Speech__ResponseFormat` and
+  `ChunkingStrategy` are configurable for that reason.
 - **Azure only.** One provider per capability; no provider abstraction beyond the internal interfaces.
 - **Images only for OCR**: no PDF page processing. Azure AI Vision Image Analysis 4.0 is documented by
   Microsoft as scheduled for retirement on 2028-09-25.
