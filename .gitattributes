@@ -1,0 +1,105 @@
+# Set default behavior to automatically normalize line endings
+* text=auto
+
+# Force LF line endings for shell scripts (required for Unix/Linux compatibility)
+*.sh text eol=lf
+
+# Force LF line endings for other Unix-style files
+*.bash text eol=lf
+*.fish text eol=lf
+*.zsh text eol=lf
+
+# Dockerfile and related files should use LF
+Dockerfile text eol=lf
+*.dockerfile text eol=lf
+.dockerignore text eol=lf
+
+# YAML files should use LF (common in CI/CD pipelines)
+*.yml text eol=lf
+*.yaml text eol=lf
+
+# JSON files
+*.json text eol=lf
+
+# Markdown files
+*.md text eol=lf
+
+# JavaScript/TypeScript files
+*.js text eol=lf
+*.ts text eol=lf
+*.jsx text eol=lf
+*.tsx text eol=lf
+*.mjs text eol=lf
+
+# Configuration files that often need LF
+.gitignore text eol=lf
+.gitattributes text eol=lf
+.editorconfig text eol=lf
+*.env text eol=lf
+*.env.* text eol=lf
+
+# C# files can use CRLF on Windows (default behavior with text=auto)
+*.cs text
+*.csproj text
+*.sln text
+*.config text
+
+# Binary files (mark as binary to prevent git from trying to merge/diff them)
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.gif binary
+*.ico binary
+*.pdf binary
+*.zip binary
+*.tar.gz binary
+*.exe binary
+*.dll binary
+*.so binary
+*.dylib binary
+
+# Font files
+*.woff binary
+*.woff2 binary
+*.eot binary
+*.ttf binary
+*.otf binary
+
+# Archive files
+*.7z binary
+*.dmg binary
+*.gz binary
+*.iso binary
+*.jar binary
+*.rar binary
+*.tar binary
+*.zip binary
+
+# Video and audio files
+*.mov binary
+*.mp4 binary
+*.mp3 binary
+*.flv binary
+*.fla binary
+*.swf binary
+
+# Adobe files
+*.ai binary
+*.psd binary
+
+# Office files
+*.doc binary
+*.docx binary
+*.xls binary
+*.xlsx binary
+*.ppt binary
+*.pptx binary
+
+# Database files
+*.db binary
+*.sqlite binary
+*.sqlite3 binary
+
+# Package manager lock files (these should maintain their original line endings)
+package-lock.json text eol=lf
+yarn.lock text eol=lf
