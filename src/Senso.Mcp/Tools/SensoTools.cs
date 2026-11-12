@@ -19,7 +19,7 @@ public sealed class SensoTools
         _runner = runner;
     }
 
-    [McpServerTool(Name = "ocr_image", ReadOnly = true, OpenWorld = true)]
+    [McpServerTool(Name = "ocr_image", ReadOnly = true, Destructive = false, Idempotent = true, OpenWorld = true)]
     [Description("Extract text from an image (printed or handwritten) using Azure AI Vision. The image is uploaded to your Azure resource. " +
                  "Returns the text plus, optionally, lines and words with bounding boxes [x, y, width, height] in pixels and confidence. " +
                  "Supports JPEG, PNG, GIF, BMP, WebP and TIFF. Provide exactly one of filePath or base64Data.")]
@@ -33,7 +33,7 @@ public sealed class SensoTools
         _runner.RunAsync("ocr_image", timeoutSeconds, cancellationToken,
             ct => _ocr.RecognizeAsync(filePath, base64Data, includeLayout, redactPii, ct));
 
-    [McpServerTool(Name = "transcribe_audio", ReadOnly = true, OpenWorld = true)]
+    [McpServerTool(Name = "transcribe_audio", ReadOnly = true, Destructive = false, Idempotent = true, OpenWorld = true)]
     [Description("Transcribe an audio file with speaker labels and timestamped segments using an Azure OpenAI transcription deployment. " +
                  "The audio is uploaded to your Azure resource. Supports WAV, MP3, M4A, OGG, FLAC and WebM up to 25 MB. " +
                  "Formats: json (text + segments), text, srt, vtt. Provide exactly one of filePath or base64Data.")]

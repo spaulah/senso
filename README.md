@@ -114,6 +114,8 @@ You only need to configure the capability you use; the other tool returns a clea
 
 Provide **exactly one** of `filePath` (absolute local path) or `base64Data` (base64 or a `data:` URL).
 
+Both tools declare all four MCP annotation hints (`readOnlyHint`, `destructiveHint`, `idempotentHint`, `openWorldHint`) explicitly.
+
 ### `ocr_image`
 
 | Parameter | Default | Notes |
